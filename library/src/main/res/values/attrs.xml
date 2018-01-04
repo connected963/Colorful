@@ -4,4 +4,14 @@
         <attr name="primary_color" format="boolean"/>
         <attr name="accent_color" format="boolean"/>
     </declare-styleable>
+
+    <attr name="defaultColor" format="reference"/>
+    <attr name="defaultColorStroke" format="reference"/>
+    <attr name="pressedColor" format="reference"/>
+    <attr name="pressedColorStroke" format="reference"/>
+    <attr name="focusedColor" format="reference"/>
+    <attr name="focusedColorStroke" format="reference"/>
+    <attr name="disabledColor" format="reference"/>
+    <attr name="disabledColorStroke" format="reference"/>
+
 </resources>

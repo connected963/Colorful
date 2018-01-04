@@ -12,8 +12,9 @@ public class SampleApp extends Application {
         Colorful.defaults()
                 .primaryColor(Colorful.ThemeColor.RED)
                 .accentColor(Colorful.ThemeColor.BLUE)
+                .buttonColor(Colorful.ButtonColor.of(Colorful.ThemeColor.ORANGE))
                 .translucent(false)
-                .dark(true);
+                .dark(false);
 
         Colorful.init(this);
     }

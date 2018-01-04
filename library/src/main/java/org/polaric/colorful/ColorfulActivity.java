@@ -19,6 +19,10 @@ public abstract class ColorfulActivity extends AppCompatActivity {
         setTheme(Colorful.getThemeDelegate().getStyleResBase());
         getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResPrimary(), true);
         getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResAccent(), true);
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDefault(), true);
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonPressed(), true);
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonFocused(), true);
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDisabled(), true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             if (Colorful.getThemeDelegate().isTranslucent()) {
                 getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

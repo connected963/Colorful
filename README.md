@@ -4,6 +4,8 @@
 
 Colorful is a dynamic theme library allowing you to change your apps' color schemes easily.
 
+## This fork
+This fork only adds feature to change color of buttons.
 
 ## License
 
@@ -81,6 +83,45 @@ After which you must call `apply();` to save your changes
 
 Colorful will handle saving and loading your theme preferences for you.
 
+You can setup the colors of buttons adding the call 
+```java
+    .buttonColor(Colorful.ButtonColor.of(Colorful.ThemeColor.ORANGE))
+```
+on your `config` method call (before `apply();` call)
+```java
+Colorful.config(this)
+                .primaryColor(Colorful.ThemeColor.RED)
+                .accentColor(Colorful.ThemeColor.BLUE)
+                .buttonColor(Colorful.ButtonColor.of(Colorful.ThemeColor.ORANGE))
+                .translucent(false)
+                .dark(true)
+                .apply();
+```
+Besides that, you must to change button background to `@drawable/colorful_button`.
+You can do this on every button that should be customized, or customizing your theme.
+
+Customizing your app theme:
+```xml
+    <style name="AppTheme" parent="...">
+        ...
+        <!-- Customize your theme here. -->
+        <item name="buttonStyle">@style/AppTheme.Button</item>
+        ...
+    </style>
+    ...
+    <style name="AppTheme.Button" parent="...Button">
+        <item name="android:background">@drawable/colorful_button</item>
+    </style>
+```
+
+Customizing only one button:
+```xml
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/colorful_button"
+        android:text="Button" />
+```
 ## Color Chooser
 
 Colorful has a inbuilt color chooser dialog that will return a `ThemeColor` object you can pass directly to Colorful

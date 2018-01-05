@@ -43,16 +43,18 @@ public class SampleApp extends Application {
     }
 }
 ```
-Any `Activity` you wish to be themed must extend from `CActivity`
+Any `Activity` you wish to be themed must extend from `ColorfulActivity`
 ```java
-public class MainActivity extends CActivity
+public class MainActivity extends ColorfulActivity
 ```
-
+Or, if you do not want override your theme
+```java
+public class MainActivity extends ColorfulActivityKeepTheme
+```
 Alternatively you can call the following method after `super.onCreate(savedInstanceState);` and before `setContentView();`
 ```java
 Colorful.applyTheme(Activity activity);
 ```
-
 You can also use `Colorful.applyTheme(Activity activity, Boolean overrideBase);` where `overrideBase` defines whether you want `Colorful` to override your base theme as well, or simply set the primary and accent colors. This allows you to use Colorful with your own pre-defined style, but *will* break light/dark functionality.
 
 You can set the default theme colors Colorful will use with the `defaults()` method

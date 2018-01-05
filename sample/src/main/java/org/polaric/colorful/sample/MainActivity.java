@@ -5,8 +5,9 @@ import android.support.v7.widget.Toolbar;
 
 import org.polaric.colorful.Colorful;
 import org.polaric.colorful.ColorfulActivity;
+import org.polaric.colorful.ColorfulActivityKeepTheme;
 
-public class MainActivity extends ColorfulActivity {
+public class MainActivity extends ColorfulActivityKeepTheme {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

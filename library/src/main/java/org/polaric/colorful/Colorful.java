@@ -1,11 +1,14 @@
 package org.polaric.colorful;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
+import android.view.WindowManager;
 
 public class Colorful {
     private static ThemeDelegate delegate;
@@ -44,12 +47,26 @@ public class Colorful {
         if (overrideBase) {
             activity.setTheme(getThemeDelegate().getStyleResBase());
         }
+
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResPrimary(), true);
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResAccent(), true);
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResButtonDefault(), true);
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResButtonPressed(), true);
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResButtonFocused(), true);
         activity.getTheme().applyStyle(getThemeDelegate().getStyleResButtonDisabled(), true);
+
+        addTaskDescriptionAndTranslucentFlag(activity);
+    }
+
+    private static void addTaskDescriptionAndTranslucentFlag(@NonNull Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (Colorful.getThemeDelegate().isTranslucent()) {
+                activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+
+            final ActivityManager.TaskDescription tDesc = new ActivityManager.TaskDescription(null, null, activity.getResources().getColor(Colorful.getThemeDelegate().getPrimaryColor().getColorRes()));
+            activity.setTaskDescription(tDesc);
+        }
     }
 
     private static void writeValues(Context context) {

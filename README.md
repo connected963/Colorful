@@ -1,5 +1,5 @@
 # Colorful
-[![Release](https://jitpack.io/v/garretyoder/Colorful.svg)](https://jitpack.io/#garretyoder/Colorful)
+[![Release](https://jitpack.io/v/connected963/Colorful.svg)](https://jitpack.io/#connected963/Colorful)
 
 
 Colorful is a dynamic theme library allowing you to change your apps' color schemes easily.

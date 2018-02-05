@@ -16,12 +16,12 @@ class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.ItemVie
 
     @Override
     public int getItemCount() {
-        return Colorful.ThemeColor.values().length;
+        return ThemeColor.values().length;
     }
 
     @Override
     public void onBindViewHolder(ItemViewHolder ViewHolder, int i) {
-        ViewHolder.circle.setColor(context.getResources().getColor(Colorful.ThemeColor.values()[i].getColorRes()));
+        ViewHolder.circle.setColor(context.getResources().getColor(ThemeColor.values()[i].getColorRes()));
     }
 
     @Override
@@ -31,7 +31,7 @@ class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.ItemVie
             @Override
             public void onClick(View view) {
                 if (listener!=null) {
-                    listener.onItemClick(Colorful.ThemeColor.values()[holder.getAdapterPosition()]);
+                    listener.onItemClick(ThemeColor.values()[holder.getAdapterPosition()]);
                 }
             }
         });
@@ -51,6 +51,6 @@ class ColorPickerAdapter extends RecyclerView.Adapter<ColorPickerAdapter.ItemVie
     }
 
     interface OnItemClickListener {
-        void onItemClick(Colorful.ThemeColor color);
+        void onItemClick(ThemeColor color);
     }
 }

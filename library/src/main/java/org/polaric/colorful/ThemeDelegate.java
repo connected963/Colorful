@@ -5,35 +5,51 @@ import android.support.annotation.StyleRes;
 import android.util.Log;
 
 public class ThemeDelegate {
-    private Colorful.ThemeColor primaryColor;
-    private Colorful.ThemeColor accentColor;
+
+    private ThemeColor primaryColor;
+    private ThemeColor accentColor;
+
     private Colorful.ButtonColor buttonColor;
     private boolean translucent;
     private boolean dark;
+
     @StyleRes
     private int styleResPrimary;
+
     @StyleRes
     private int styleResAccent;
+
     @StyleRes
     private int styleResBase;
+
     @StyleRes
     private int styleResButtonDefault;
+
     @StyleRes
     private int styleResButtonPressed;
+
     @StyleRes
     private int styleResButtonFocused;
+
     @StyleRes
     private int styleResButtonDisabled;
 
-    ThemeDelegate(Context context, Colorful.ThemeColor primary, Colorful.ThemeColor accent, Colorful.ButtonColor buttonColor, boolean translucent, boolean dark) {
+    @StyleRes
+    private int styleResButtonMLollipop;
+
+    ThemeDelegate(Context context, ThemeColor primary, ThemeColor accent, Colorful.ButtonColor buttonColor, boolean translucent, boolean dark) {
+
         this.primaryColor = primary;
         this.accentColor = accent;
         this.buttonColor = buttonColor;
         this.translucent = translucent;
         this.dark = dark;
+
         long curTime = System.currentTimeMillis();
+
         styleResPrimary = context.getResources().getIdentifier("primary" + primary.ordinal(), "style", context.getPackageName());
         styleResAccent = context.getResources().getIdentifier("accent" + accent.ordinal(), "style", context.getPackageName());
+        styleResButtonMLollipop = context.getResources().getIdentifier("button" + buttonColor.getDefaultButton().ordinal(), "style", context.getPackageName());
         styleResButtonDefault = context.getResources().getIdentifier("buttonDefault" + buttonColor.getDefaultButton().ordinal(), "style", context.getPackageName());
         styleResButtonPressed = context.getResources().getIdentifier("buttonPressed" + buttonColor.getPressedButton().ordinal(), "style", context.getPackageName());
         styleResButtonFocused = context.getResources().getIdentifier("buttonFocused" + buttonColor.getFocusedButton().ordinal(), "style", context.getPackageName());
@@ -77,11 +93,17 @@ public class ThemeDelegate {
         return styleResButtonDisabled;
     }
 
-    public Colorful.ThemeColor getPrimaryColor() {
+    @StyleRes
+    public int getStyleResButtonMLollipop() {
+        return styleResButtonMLollipop;
+    }
+
+
+    public ThemeColor getPrimaryColor() {
         return primaryColor;
     }
 
-    public Colorful.ThemeColor getAccentColor() {
+    public ThemeColor getAccentColor() {
         return accentColor;
     }
 

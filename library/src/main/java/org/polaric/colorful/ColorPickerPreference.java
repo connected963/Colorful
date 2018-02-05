@@ -6,6 +6,7 @@ import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 
 public class ColorPickerPreference extends Preference implements ColorPickerDialog.OnColorSelectedListener {
+
     private boolean primary;
     private boolean accent;
 
@@ -14,16 +15,18 @@ public class ColorPickerPreference extends Preference implements ColorPickerDial
         setWidgetLayoutResource(R.layout.preference_colorpicker);
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.colorpicker);
+
         try {
             primary = ta.getBoolean(R.styleable.colorpicker_primary_color,false);
             accent = ta.getBoolean(R.styleable.colorpicker_accent_color, false);
         } finally {
             ta.recycle();
         }
+
     }
 
     @Override
-    public void onColorSelected(Colorful.ThemeColor color) {
+    public void onColorSelected(ThemeColor color) {
         if (primary) {
             Colorful.config(getContext())
                     .primaryColor(color)

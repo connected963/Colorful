@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class ColorPickerDialog extends Dialog implements View.OnClickListener, ColorPickerAdapter.OnItemClickListener {
+
     private RecyclerView recycler;
     private Toolbar toolbar;
     private OnColorSelectedListener listener;
@@ -23,9 +24,9 @@ public class ColorPickerDialog extends Dialog implements View.OnClickListener, C
     }
 
     @Override
-    public void onItemClick(Colorful.ThemeColor color) {
+    public void onItemClick(ThemeColor color) {
         dismiss();
-        if (listener!=null) {
+        if (listener != null) {
             listener.onColorSelected(color);
         }
     }
@@ -50,10 +51,10 @@ public class ColorPickerDialog extends Dialog implements View.OnClickListener, C
     }
 
     public interface OnColorSelectedListener {
-        void onColorSelected(Colorful.ThemeColor color);
+        void onColorSelected(ThemeColor color);
     }
 
     public void setOnColorSelectedListener(OnColorSelectedListener listener) {
-        this.listener=listener;
+        this.listener = listener;
     }
 }

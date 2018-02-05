@@ -1,7 +1,6 @@
 package org.polaric.colorful;
 
 import android.app.ActivityManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,23 +13,15 @@ public abstract class ColorfulActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        themeString=Colorful.getThemeString();
-        setTheme(Colorful.getThemeDelegate().getStyleResBase());
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResPrimary(), true);
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResAccent(), true);
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDefault(), true);
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonPressed(), true);
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonFocused(), true);
-        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDisabled(), true);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (Colorful.getThemeDelegate().isTranslucent()) {
-                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            }
 
-            ActivityManager.TaskDescription tDesc = new ActivityManager.TaskDescription(null, null, getResources().getColor(Colorful.getThemeDelegate().getPrimaryColor().getColorRes()));
-            setTaskDescription(tDesc);
-        }
+        super.onCreate(savedInstanceState);
+
+        themeString = Colorful.getThemeString();
+
+        setUpTheme();
+
+        setUpColorInputs();
+
     }
 
     @Override
@@ -41,4 +32,41 @@ public abstract class ColorfulActivity extends AppCompatActivity {
             recreate();
         }
     }
+
+    private void setUpColorInputs() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDefault(), true);
+            getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonPressed(), true);
+            getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonFocused(), true);
+            getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonDisabled(), true);
+
+            if (Colorful.getThemeDelegate().isTranslucent()) {
+                getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+
+            ActivityManager.TaskDescription tDesc =
+                    new ActivityManager.TaskDescription(
+                            null,
+                            null,
+                            getResources().getColor(
+                                    Colorful.getThemeDelegate().getPrimaryColor().getColorRes()
+                            ));
+
+            setTaskDescription(tDesc);
+
+        } else {
+
+            getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResButtonMLollipop(), true);
+
+        }
+    }
+
+    private void setUpTheme() {
+        setTheme(Colorful.getThemeDelegate().getStyleResBase());
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResPrimary(), true);
+        getTheme().applyStyle(Colorful.getThemeDelegate().getStyleResAccent(), true);
+    }
+
 }

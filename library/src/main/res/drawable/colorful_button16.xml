@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/colorful_default_button16"
+        android:state_pressed="true" />
+    <item android:drawable="@drawable/colorful_pressed_button16"
+        android:state_focused="true" />
+    <item android:drawable="@drawable/colorful_focused_button16"
+        android:state_enabled="false" />
+    <item android:drawable="@drawable/colorful_disabled_button16" />
+</selector>

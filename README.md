@@ -1,7 +1,6 @@
 # Colorful
 [![Release](https://jitpack.io/v/connected963/Colorful.svg)](https://jitpack.io/#connected963/Colorful)
 
-
 Colorful is a dynamic theme library allowing you to change your apps' color schemes easily.
 
 ## This fork
@@ -27,7 +26,7 @@ allprojects {
 Add Colorful as a dependency to your `build.gradle`
 ```groovy
 dependencies {
-    compile 'com.github.connected963:Colorful:1.6'
+    compile 'com.github.connected963:Colorful:1.7'
 }
 ```
 

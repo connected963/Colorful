@@ -26,7 +26,7 @@ allprojects {
 Add Colorful as a dependency to your `build.gradle`
 ```groovy
 dependencies {
-    compile 'com.github.connected963:Colorful:1.7'
+    compile 'com.github.connected963:Colorful:1.8'
 }
 ```
 
